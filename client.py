@@ -42,12 +42,25 @@ class MainWindow(QWidget):
         self.setWindowTitle("Client")
         self.setFixedSize(400, 400)
         self.label1 = QLabel("Enter your IP:", self)
+        self.label1.move(10, 1)
         self.text = QLineEdit(self)
         self.text.move(10, 30)
+
+        self.label5 = QLabel("Enter your API Key:", self)
+        self.label5.move(10, 70)
+        self.text5 = QLineEdit(self)
+        self.text5.move(10, 100)
+
+        self.label6 = QLabel("Enter the Hostname:", self)
+        self.label6.move(10, 140)
+        self.text6 = QLineEdit(self)
+        self.text6.move(10, 170)
+
+
         self.label2 = QLabel("Answer:", self)
-        self.label2.move(10, 60)
+        self.label2.move(10, 210)
         self.button = QPushButton("Send", self)
-        self.button.move(10, 90)
+        self.button.move(10, 240)
 
         self.button.clicked.connect(self.on_click)
         self.button.pressed.connect(self.on_click)
