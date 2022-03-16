@@ -1,6 +1,6 @@
-"""
-import requests
 
+import requests
+from PyQt5.QtWidgets import QMessageBox
 class Main():
     def query(self, hostname):
         url = "http://%s" % (hostname)
@@ -18,7 +18,7 @@ if __name__ == "__main__":
     res = main.query(hostname)
     if res:
         print(res)
-"""
+
 from PyQt5.QtWidgets import (
     QApplication,
     QWidget,
@@ -78,4 +78,6 @@ class MainWindow(QWidget):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     main = MainWindow()
+
+    #Run the app
     app.exec_()
