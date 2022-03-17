@@ -43,8 +43,8 @@ class MainWindow(QWidget):
         self.setFixedSize(400, 400)
         self.label1 = QLabel("Enter your IP:", self)
         self.label1.move(10, 1)
-        self.text = QLineEdit(self)
-        self.text.move(10, 30)
+        self.text1 = QLineEdit(self)
+        self.text1.move(10, 30)
 
         self.label5 = QLabel("Enter your API Key:", self)
         self.label5.move(10, 70)
@@ -68,7 +68,9 @@ class MainWindow(QWidget):
         self.show()
 
     def on_click(self):
-        hostname = self.text.text()
+        hostname = self.text6.text()
+#        ip = self.text1.text()
+#        api_key = self.text5.text()
 
         if hostname == "":
             QMessageBox.about(self, "Error", "Please fill the field")
