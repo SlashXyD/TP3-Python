@@ -28,6 +28,7 @@ from PyQt5.QtWidgets import (
     QLabel,
     QMessageBox,
 )
+
 from PyQt5.Qt import QUrl, QDesktopServices
 import requests
 import sys
