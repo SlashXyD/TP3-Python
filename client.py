@@ -39,9 +39,9 @@ class MainWindow(QWidget):
 
 
         self.label2 = QLabel("Answer:", self)
-        self.label2.move(10, 210)
+        self.label2.move(10, 240)
         self.button = QPushButton("Send", self)
-        self.button.move(10, 240)
+        self.button.move(10, 210)
 
         self.button.clicked.connect(self.on_click)
         self.button.pressed.connect(self.on_click)
@@ -58,7 +58,7 @@ class MainWindow(QWidget):
         else:
             res = self.__query(hostname, ip, api_key)
             if res:
-                self.label2.setText("Answer%s" % (res))
+                self.label2.setText("Answer%s %s" % (res['Organization'] + "\n", res['Country'] + "\n",))
                 self.label2.adjustSize()
                 self.show()
 
