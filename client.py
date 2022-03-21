@@ -12,6 +12,7 @@ from PyQt5.QtWidgets import (
 from PyQt5.Qt import QUrl, QDesktopServices
 import requests
 import sys
+import webbrowser 
 
 
 class MainWindow(QWidget):
@@ -23,9 +24,9 @@ class MainWindow(QWidget):
         self.setWindowTitle("Client")
         self.setFixedSize(400, 400)
         self.label1 = QLabel("Enter your IP:", self)
-        self.label1.move(10, 1)
+        self.label1.move(10, 140)
         self.text1 = QLineEdit(self)
-        self.text1.move(10, 30)
+        self.text1.move(10, 170)
 
         self.label5 = QLabel("Enter your API Key:", self)
         self.label5.move(10, 70)
@@ -33,9 +34,9 @@ class MainWindow(QWidget):
         self.text5.move(10, 100)
 
         self.label6 = QLabel("Enter the Hostname:", self)
-        self.label6.move(10, 140)
+        self.label6.move(10, 1)
         self.text6 = QLineEdit(self)
-        self.text6.move(10, 170)
+        self.text6.move(10, 30)
 
 
         self.label2 = QLabel("Answer:", self)
@@ -58,11 +59,14 @@ class MainWindow(QWidget):
         else:
             res = self.__query(hostname, ip, api_key)
             if res:
-                self.label2.setText("Answer%s %s" % (res['Organization'] + "\n", res['Country'] + "\n",))
+                self.label2.setText("\n \n Longitude: %s \n Latitude: %s \n" % (res["Longitude"], res["Latitude"]))
                 self.label2.adjustSize()
                 self.show()
+                url2 = "https://www.openstreetmap.org/?mlat=%s&mlon=%s#map=12" % (res["Latitude"], res["Longitude"])
+                webbrowser.open_new_tab(url2)
 
     def __query(self, hostname, ip, api_key):
+
         url = "http://%s/ip/%s?key=%s" % (hostname, ip, api_key)
         r = requests.get(url)
         if r.status_code == requests.codes.NOT_FOUND:
